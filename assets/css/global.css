@@ -1,0 +1,35 @@
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 94vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+#map {
+  /* height: 50vh; */
+  width: 100%;
+}
+
+.scrollarea {
+  overflow-y: auto;
+  height: fit-content;
+}
+
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding-top: 300px;
+  font-size: 30px;
+  font-family: sans-serif;
+  z-index: 10000;
+}
