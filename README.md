@@ -1,5 +1,10 @@
 # restaurant.tichaky.com
 
+## Requirement
+
+- Node js (Recommend v14)
+- Docker (Recommend)
+
 ## Build Setup
 
 ```bash
@@ -15,6 +20,18 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+```
+
+### ENV
+
+Create .env file and add variables:
+
+```bash
+# API key for connect to Google Map Platform
+GOOGLE_MAPS_API_KEY=xxx
+# API_URL = URL for connect API or backend
+API_URL=xxx
+###
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
@@ -66,3 +83,7 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+### `Utils`
+
+This directory contains your function for utility.

@@ -73,17 +73,20 @@ export default {
         })
       }
 
-      // เลือกร้านที่ 1
-      list[0].isActive = true
+      // เช็คว่ามีข้อมูลส่งมารึเปล่า
+      if (list.length > 0) {
+        // เลือกร้านที่ 1
+        list[0].isActive = true
 
-      // เซ็ตและส่งผลลัพธ์ไปยัง store เพื่อส่งไปยัง Component อื่น
-      await this.$store.commit('setRestaurants', list)
+        // เซ็ตและส่งผลลัพธ์ไปยัง store เพื่อส่งไปยัง Component อื่น
+        await this.$store.commit('setRestaurants', list)
 
-      // ทำการสร้างแผนที่และ Mark จุด
-      Marker(
-        this.restaurants[this.indexActive].name,
-        this.restaurants[this.indexActive].location
-      )
+        // ทำการสร้างแผนที่และ Mark จุด
+        Marker(
+          this.restaurants[this.indexActive].name,
+          this.restaurants[this.indexActive].location
+        )
+      }
     } else {
       alert('Network Error')
     }
