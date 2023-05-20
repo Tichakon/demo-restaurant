@@ -57,12 +57,16 @@ jobs:
         node: [14]
 
     steps:
+      - name: Test Set Environment
+        run: |
+          echo ${{ secrets.TEST }}
+
       - name: Set Key 🛎
         run: |
           mkdir -p ~/.ssh/
-          echo ${{ secrets.SSH_PRIVATE_KEY }} > ../private.key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ../private.key
           sudo chmod 600 ../private.key
-          echo ${{ secrets.SSH_KNOWN_HOSTS }} > ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
       - name: Connect and pull code
         run: |
