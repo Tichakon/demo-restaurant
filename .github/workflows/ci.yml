@@ -57,6 +57,10 @@ jobs:
         node: [14]
 
     steps:
+      - name: Test Set Environment
+        run: |
+          echo "${{ secrets.TEST }}"
+
       - name: Set Key 🛎
         run: |
           mkdir -p ~/.ssh/
