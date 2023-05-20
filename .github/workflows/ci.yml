@@ -11,7 +11,8 @@ on:
       - master
 
 jobs:
-  ci:
+  test:
+    name: Test
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -45,3 +46,29 @@ jobs:
 
       - name: Run tests 🧪
         run: npm run test
+  production:
+    name: production
+    needs: [test]
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Set Key 🛎
+        run: |
+          mkdir -p ~/.ssh/
+          echo ${{ secrets.SSH_PRIVATE_KEY }} > ../private.key
+          sudo chmod 600 ../private.key
+          echo ${{ secrets.SSH_KNOWN_HOSTS }} > ~/.ssh/known_hosts
+
+      - name: Connect and pull code
+        run: |
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && git fetch && git pull"
+
+      - name: Deploy to docker
+        run: |
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker build -t nuxt-node-rest ."
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker compose -f docker-compose.yml up -d"
