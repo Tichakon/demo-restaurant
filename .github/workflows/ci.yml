@@ -64,11 +64,11 @@ jobs:
           sudo chmod 600 ../private.key
           echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
-      # - name: Connect and pull code
-      #   run: |
-      #     ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && git fetch && git pull"
+      - name: Connect and pull code
+        run: |
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && git fetch && git pull"
 
-      # - name: Deploy to docker
-      #   run: |
-      #     ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker build -t nuxt-node-rest ."
-      #     ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker compose -f docker-compose.yml up -d"
+      - name: Deploy to docker
+        run: |
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker build -t nuxt-node-rest ."
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} -C "cd /home/iu/restaurant.tichaky.com && docker compose -f docker-compose.yml up -d"
