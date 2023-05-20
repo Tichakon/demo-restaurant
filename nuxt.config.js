@@ -57,4 +57,8 @@ export default {
   env: {
     apiUrl: process.env.API_URL,
   },
+  server: {
+    host: '0', // default: localhost
+    port: 3000,
+  },
 }

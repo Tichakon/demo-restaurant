@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  restaurant.tichaky.com:
+    container_name: restaurant.tichaky.com
+    build: .
+    image: nuxt-node-rest:latest
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    # networks:
+    #   - restaurant
+# networks:
+#   restaurant.tichaky.com:
+#     name: restaurant
+#     driver: bridge
