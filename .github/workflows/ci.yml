@@ -59,7 +59,7 @@ jobs:
     steps:
       - name: Test Set Environment
         run: |
-          echo "${{ secrets.TEST }}"
+          echo ${{ secrets.TEST }}
 
       - name: Set Key 🛎
         run: |
