@@ -1,4 +1,4 @@
-# zupports.tichaky.com
+# restaurant.tichaky.com
 
 ## Build Setup
 
@@ -66,9 +66,3 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
-
-### Run Docker
-
-docker build -t nuxt-node-rest .
-docker compose -f docker-compose.yml up -d
-docker run -it --rm --name nuxt-rest -v `pwd`:/opt/app -d -p 3000:3000 nuxt-node-rest
